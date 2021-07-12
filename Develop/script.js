@@ -1,8 +1,8 @@
 $(document).ready(function () { //Instruct system to load html & css files first
 
     let currentTime = moment().format("MMMM Do YYYY, H:mm:ss a");
-    let currentHour = moment().hour();
     let currentDay = moment().format("MMMM Do, YYYY");
+    let currentHour = moment().hour();
 
     //Current month, day & year is displayed in the jumbotron header
     currentDay = moment().format("MMMM Do, YYYY");
