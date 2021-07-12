@@ -1,23 +1,27 @@
-$(document).ready(function () {
+$(document).ready(function () { //Instruct system to load html & css files first
 
     let currentTime = moment().format("MMMM Do YYYY, H:mm:ss a");
     let currentHour = moment().hour();
     let currentDay = moment().format("MMMM Do, YYYY");
 
+    //Current month, day & year is displayed in the jumbotron header
     currentDay = moment().format("MMMM Do, YYYY");
     $("#currentDay").text("Today's Date: " + currentDay);
 
-
+    //Assigns Save Button (saveBtn) click listener for user input within the text area
     $(".saveBtn").on("click", function () {
+        //Get nearby values
+        console.log(this);
         let textArea = $(this).attr("data-value");
         let userInput = $("#" + textArea).val();
-        localStorage.setItem("#" + textArea, userInput);
 
+        //Save item in local storage
+        localStorage.setItem("#" + textArea, userInput);
     });
 
     
 
-
+    //Load saved data from each hour timeblock within Local Storage. Loop through for each hour.
     let timeBlock = ["#9am", "#10am", "#11am", "#12pm", "#1pm", "#2pm", "#3pm", "#4pm", "#5pm"];
     let milTime = [9,10,11,12,13,14,15,16,17]
     for (let i = 0; i < timeBlock.length; i++) {
@@ -28,16 +32,28 @@ $(document).ready(function () {
     };
 
 
-    function hourStyle() {
+    //Create function to determine which hourly timeblock it is currently (present), which time blocks have already passed (past), and which haven't happened yet (future).
+    
+    //Group each of the 3 into separate classes in order to change color to correspond with each group. Past = gray, Current = red, future = green.
+    function hourColor() {
+
+        //Returns current # of hours.
         let currentHour = moment().hour();
+
+        //loops through each time block
         for (let i = 0; i < timeBlock.length; i++) {
             
+            //check if it is the current time block
             if (milTime[i] === currentHour) {
                 $(timeBlock[i]).addClass("present");
             } 
+
+            //check if time hasn't happened yet
             else if(milTime[i] >= currentHour) {
                 $(timeBlock[i]).addClass("future");
             }
+
+            //if neither, mark as the class "Past".
             else {
                 $(timeBlock[i]).addClass("past");
             };
@@ -45,6 +61,8 @@ $(document).ready(function () {
         }     
         
     };
-    hourStyle();
+
+    //Run function to change the colors of each time block.
+    hourColor();
 
 });
