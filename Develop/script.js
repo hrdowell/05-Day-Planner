@@ -1,16 +1,16 @@
 $(document).ready(function () {
 
-    var currentTime = moment().format("MMMM Do YYYY, H:mm:ss a");
-    var currentHour = moment().hour();
-    var currentDay = moment().format("MMMM Do, YYYY");
+    let currentTime = moment().format("MMMM Do YYYY, H:mm:ss a");
+    let currentHour = moment().hour();
+    let currentDay = moment().format("MMMM Do, YYYY");
 
     currentDay = moment().format("MMMM Do, YYYY");
     $("#currentDay").text("Today's Date: " + currentDay);
 
 
     $(".saveBtn").on("click", function () {
-        var textArea = $(this).attr("data-value");
-        var userInput = $("#" + textArea).val();
+        let textArea = $(this).attr("data-value");
+        let userInput = $("#" + textArea).val();
         localStorage.setItem("#" + textArea, userInput);
 
     });
@@ -29,7 +29,7 @@ $(document).ready(function () {
 
 
     function hourStyle() {
-        var currentHour = moment().hour();
+        let currentHour = moment().hour();
         for (let i = 0; i < timeBlock.length; i++) {
             
             if (milTime[i] === currentHour) {
