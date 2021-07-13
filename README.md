@@ -74,4 +74,5 @@ Then, I used an event listener👂 all of the save buttons that saves the user i
 
 
 ## 📆 The Final Product
-![My Deployed Website In Action](./Assets/images/finalproduct.GIF)
+![My Deployed Website In Action](./Assets/images/finalproduct.gif)
+![My Deployed Website In Action](./Assets/images/website.PNG)
